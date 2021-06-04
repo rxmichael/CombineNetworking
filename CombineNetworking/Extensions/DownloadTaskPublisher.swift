@@ -27,25 +27,33 @@ extension URLSession {
     func downloadTaskPublisher(with request: URLRequest) -> AnyPublisher<DownloadStatus, Error> {
         let subject = PassthroughSubject<DownloadStatus, Error>()
         let task = downloadTask(with: request) { url, response, error in
-            if let url = url, let response = response {
-                // We have to move this file before returning from this closure. The original will be deleted the moment we return.
-                // Try to maintain file extension from URLRequest.
-                var targetURL = URL(fileURLWithPath: NSTemporaryDirectory())
-                    .appendingPathComponent(UUID().uuidString)
-                if let pathExtension = request.url?.pathExtension {
-                    targetURL.appendPathExtension(pathExtension)
-                }
-                do {
-                    try FileManager.default.moveItem(at: url, to: targetURL)
-                    subject.send(.complete(response: DownloadResponse(fileURL: targetURL, response: response)))
-                    subject.send(completion: .finished)
-                } catch {
-                    subject.send(completion: .failure(error))
-                }
-            } else if let error = error {
+            guard error == nil else {
+                subject.send(completion: .failure(error!))
+                return
+            }
+            
+            guard let response = response else {
+                subject.send(completion: .failure(URLError(.badServerResponse)))
+                return
+            }
+
+            guard let url = url else {
+                subject.send(completion: .failure(URLError(.fileDoesNotExist)))
+                return
+            }
+            
+            do {
+                guard let cacheDir = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first else { return }
+                let fileUrl = cacheDir.appendingPathComponent(UUID().uuidString)
+                try FileManager.default.moveItem(atPath: url.path, toPath: fileUrl.path)
+                subject.send(.complete(response: DownloadResponse(fileURL: fileUrl, response: response)))
+                subject.send(completion: .finished)
+            } catch {
                 subject.send(completion: .failure(error))
+                return
             }
         }
+        
         task.taskDescription = request.url?.absoluteString
             
         let receivedPublisher = task.publisher(for: \.countOfBytesReceived)
