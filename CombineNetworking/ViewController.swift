@@ -12,12 +12,14 @@ class ViewController: UIViewController {
     
     @Published var progress: Float = 0 {
         didSet {
-            progressView.setProgress(progress, animated: false)
-            progressLabel.text = String(format: "%.0f%%", progress * 100)
+            DispatchQueue.main.async {
+                self.progressView.setProgress(self.progress, animated: false)
+                self.progressLabel.text = String(format: "%.0f%%", self.progress * 100)
+            }
         }
     }
     
-    private var cancellable: AnyCancellable?
+    private var cancellables =  Set<AnyCancellable>()
     
     private lazy var progressLabel: UILabel = {
         let label = UILabel()
@@ -54,22 +56,30 @@ class ViewController: UIViewController {
         
         let url = URL(string: "https://images.unsplash.com/photo-1554773228-1f38662139db")!
         
-        cancellable =
-            URLSession.shared
-            .downloadTaskPublisher(for: url)
-            .receive(on: OperationQueue.main)
-            .map { status -> Float in
-                switch status {
-                case let .downloading(percentage):
-                    return Float(percentage)
-                // Handle progress
-                case let .complete(downloadResponse):
-                // Handle response
-                    return Float(1)
+        let progress = setupRequestProgress()
+        
+        URLSession.shared
+            .downloadTaskPublisher(for: url, progress: progress)
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { completion in
+                if case let .failure(error) = completion {
+                    print("Error \(error)")
                 }
-            }
-            .replaceError(with: 0)
+            }, receiveValue: { response in
+                print("\(response.fileURL)")
+            })
+            .store(in: &cancellables)
+    }
+    
+    func setupRequestProgress() -> Progress {
+        let requestProgress = Progress.discreteProgress(totalUnitCount: 1)
+        progressView.observedProgress = requestProgress
+        requestProgress
+            .publisher(for: \.fractionCompleted)
+            .map { Float($0) }
             .assign(to: \.progress, on: self)
+            .store(in: &cancellables)
+        return requestProgress
     }
 
 
