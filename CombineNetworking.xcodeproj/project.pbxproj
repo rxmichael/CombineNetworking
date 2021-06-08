@@ -10,12 +10,14 @@
 		C27C5C51266998EB00B1A370 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27C5C50266998EB00B1A370 /* AppDelegate.swift */; };
 		C27C5C53266998EC00B1A370 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27C5C52266998EC00B1A370 /* SceneDelegate.swift */; };
 		C27C5C55266998EC00B1A370 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27C5C54266998EC00B1A370 /* ViewController.swift */; };
-		C27C5C58266998EC00B1A370 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C27C5C56266998EC00B1A370 /* Main.storyboard */; };
 		C27C5C5A266998EF00B1A370 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C27C5C59266998EF00B1A370 /* Assets.xcassets */; };
 		C27C5C5D266998EF00B1A370 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C27C5C5B266998EF00B1A370 /* LaunchScreen.storyboard */; };
 		C27C5C68266998EF00B1A370 /* CombineNetworkingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27C5C67266998EF00B1A370 /* CombineNetworkingTests.swift */; };
 		C27C5C73266998EF00B1A370 /* CombineNetworkingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27C5C72266998EF00B1A370 /* CombineNetworkingUITests.swift */; };
 		C27C5C822669995000B1A370 /* DownloadTaskPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27C5C812669995000B1A370 /* DownloadTaskPublisher.swift */; };
+		C2EB491A26702DF8005D883B /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EB491926702DF8005D883B /* MainTabController.swift */; };
+		C2EB491C26702E97005D883B /* GridCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EB491B26702E97005D883B /* GridCollectionViewController.swift */; };
+		C2EB491E26702EEF005D883B /* GridCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EB491D26702EEF005D883B /* GridCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,7 +42,6 @@
 		C27C5C50266998EB00B1A370 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C27C5C52266998EC00B1A370 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		C27C5C54266998EC00B1A370 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		C27C5C57266998EC00B1A370 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C27C5C59266998EF00B1A370 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C27C5C5C266998EF00B1A370 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C27C5C5E266998EF00B1A370 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -52,6 +53,9 @@
 		C27C5C74266998EF00B1A370 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C27C5C812669995000B1A370 /* DownloadTaskPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadTaskPublisher.swift; sourceTree = "<group>"; };
 		C27C5C8326699A2A00B1A370 /* NetworkProgress.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = NetworkProgress.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		C2EB491926702DF8005D883B /* MainTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
+		C2EB491B26702E97005D883B /* GridCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridCollectionViewController.swift; sourceTree = "<group>"; };
+		C2EB491D26702EEF005D883B /* GridCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,11 +110,13 @@
 				C27C5C50266998EB00B1A370 /* AppDelegate.swift */,
 				C27C5C52266998EC00B1A370 /* SceneDelegate.swift */,
 				C27C5C54266998EC00B1A370 /* ViewController.swift */,
-				C27C5C56266998EC00B1A370 /* Main.storyboard */,
 				C27C5C59266998EF00B1A370 /* Assets.xcassets */,
 				C27C5C5B266998EF00B1A370 /* LaunchScreen.storyboard */,
 				C27C5C5E266998EF00B1A370 /* Info.plist */,
 				C27C5C8326699A2A00B1A370 /* NetworkProgress.playground */,
+				C2EB491926702DF8005D883B /* MainTabController.swift */,
+				C2EB491B26702E97005D883B /* GridCollectionViewController.swift */,
+				C2EB491D26702EEF005D883B /* GridCollectionViewCell.swift */,
 			);
 			path = CombineNetworking;
 			sourceTree = "<group>";
@@ -246,7 +252,6 @@
 			files = (
 				C27C5C5D266998EF00B1A370 /* LaunchScreen.storyboard in Resources */,
 				C27C5C5A266998EF00B1A370 /* Assets.xcassets in Resources */,
-				C27C5C58266998EC00B1A370 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,7 +278,10 @@
 			files = (
 				C27C5C55266998EC00B1A370 /* ViewController.swift in Sources */,
 				C27C5C51266998EB00B1A370 /* AppDelegate.swift in Sources */,
+				C2EB491A26702DF8005D883B /* MainTabController.swift in Sources */,
 				C27C5C53266998EC00B1A370 /* SceneDelegate.swift in Sources */,
+				C2EB491E26702EEF005D883B /* GridCollectionViewCell.swift in Sources */,
+				C2EB491C26702E97005D883B /* GridCollectionViewController.swift in Sources */,
 				C27C5C822669995000B1A370 /* DownloadTaskPublisher.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -310,14 +318,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		C27C5C56266998EC00B1A370 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C27C5C57266998EC00B1A370 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		C27C5C5B266998EF00B1A370 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

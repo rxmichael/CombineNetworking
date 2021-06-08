@@ -19,7 +19,7 @@ class ViewController: UIViewController {
         }
     }
     
-    private var cancellables =  Set<AnyCancellable>()
+    private var cancellables: Set<AnyCancellable> = []
     
     private lazy var progressLabel: UILabel = {
         let label = UILabel()
@@ -44,6 +44,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        view.backgroundColor = .orange
         view.addSubview(progressView)
         view.addSubview(progressLabel)
         
